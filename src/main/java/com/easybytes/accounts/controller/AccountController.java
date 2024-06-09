@@ -2,9 +2,12 @@ package com.easybytes.accounts.controller;
 
 import com.easybytes.accounts.constants.AccountsConstants;
 import com.easybytes.accounts.dto.CustomerDto;
+import com.easybytes.accounts.dto.ErrorResponseDto;
 import com.easybytes.accounts.dto.ResponseDto;
 import com.easybytes.accounts.service.IAccountService;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -70,7 +73,10 @@ public class AccountController {
             ),
             @ApiResponse(
                     responseCode = "500",
-                    description = "HTTP Status Internal Server Error"
+                    description = "HTTP Status Internal Server Error",
+                    content = @Content(
+                            schema = @Schema(implementation = ErrorResponseDto.class)
+                    )
             )
     }
     )
